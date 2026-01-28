@@ -18,15 +18,13 @@ dbConnect()
     console.log("Database Connection Failed");
     console.log(err.message);
   });
-// Routes
+
 const studentRouter = require("./routes/students");
 
-// Test Route
 app.get("/", (req, res) => {
      res.send("Server is Running");
 });
 
-// Routes Use
 app.use("/students", studentRouter);
 
 app.get("/about", (req, res) => {

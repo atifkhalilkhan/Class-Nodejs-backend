@@ -1,17 +1,17 @@
-const mongoose = require("mongoose");
+const { default: mongoose } = require("mongoose")
 
-const connectdb = async () => {
-  try {
-    await mongoose.connect(
-      ""
-    );
+const connectDB = () => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect("mongodb+srv://class-work:classwork123@class-work.qf5kcmv.mongodb.net/studentDB").then(() => {
+            console.log("db connect")
+            resolve()
+        }).catch((err) => {
+            reject(err)
+        })
+    })
+}
 
-    console.log("Database Connected Successfully");
-  } catch (error) {
-    console.log("Database Connection Failed");
-    console.log(error.message);
-    process.exit(1);
-  }
-};
+module.exports = connectDB
 
-module.exports = connectdb;
+
+
